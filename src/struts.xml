@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+"http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<package name="default" extends="struts-default">
+
+		<!-- 对category的管理 -->
+		<action name="*Action" class="categoryAction" method="{1}">
+           <result name="deletecategory" type="redirectAction">listCategoryAction</result>
+           <result name="addorupdatecategory" type="redirectAction">listCategoryAction</result>
+           <result name="listcategory">/category/categoryList.jsp</result>
+           <result name="getcategorybyid">/category/categoryUpdate.jsp</result>
+           <allowed-methods>listCategory,deleteCategory,addOrUpdateCategory,getCategoryById</allowed-methods>        
+		</action>
+		
+		<action name="111" class="categoryAction" method="listCategory">
+		<result name="listcategory">/menu2.jsp</result>
+		</action>
+		
+		<!-- 对nwe的管理 -->
+ 		<action name="*Action1" class="newAction" method="{1}">
+           <result name="deletenew" type="redirectAction">listNewAction1</result>
+           <result name="addorupdatenew" type="redirectAction">listNewAction1</result>
+           <result name="updatenew">/new/newUpdate.jsp</result>
+           <result name="shownew">/new/shownew.jsp</result>
+           <result name="listnew">/new/newList.jsp</result>     
+           <result name="getallcategoryforadd">/new/newAdd.jsp</result>
+           
+           <result name="shownew1">/new/newList1.jsp</result>
+           <allowed-methods>listNew,deleteNew,updateNew,showNew,addOrUpdateNew,getAllCategoryForAdd,showNew1,findNewByCategoryNameNews</allowed-methods>
+		</action>
+		
+		<action name="findNewByCategoryNameNews1" class="com.action.NewAction" method="findNewByCategoryNameNews">
+			<result name="listNews">/new/newList1.jsp</result>
+		</action>
+		
+		
+		<!-- 对user的管理 -->
+		<action name="user_*" class="userAction" method="{1}">
+		   
+		   <result name="login">/index.jsp</result>
+		   <result name="relogin">/login.jsp</result>
+		   <allowed-methods>login</allowed-methods>
+           
+        </action>
+	</package>
+</struts>
